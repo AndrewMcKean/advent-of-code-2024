@@ -2,7 +2,9 @@
 Puzzle Input: Two unsorted list of nums
 Puzzle Ouput: Int, the summed distance between the smallest -> largest nums in both lists. i.e first[0] - second[0] + first[1] - second[1] etc.
 '''
+import functools
 
+# Get data lists & sort them
 data = open('puzzleInput.txt', 'r').read().split('\n')
 
 first = []
@@ -16,28 +18,24 @@ for i in range(len(data)):
 first.sort()
 second.sort()
 
-differences = []
+# Define function for getting the difference
+def get_difference(index):
+  temp = [first[index], second[index]]
 
-for i in range(len(first)):
-  temp = [first[i], second[i]]
-  
   temp.sort()
 
-  print(temp)
-  
-  differences.append(int(temp[1]) - int(temp[0]))
+  return temp[1] - temp[0]
+
+# Get the sum of the differences
+better_sum = functools.reduce(lambda acc, index_value_pair: acc + get_difference(index_value_pair[0]), enumerate(first), 0)
 
 
-sum = 0
-
-for i in range(len(differences)):
-  sum += differences[i]
-
-print(f"The total is: {sum}")
-
+print(f"The total is: {better_sum}")
 
 '''
 Simple enough.
-Inefficient solution though.
+Improved the solution a bit.
+Reduce is neat in python, using enumerate allows me to get an index like I would in JS. Leave the 0 off the end tripped me up a little. 
+Seems you need to initalize the acc with 0 otherwise the reduce will think you want to reduce to a tuple.
 '''
 

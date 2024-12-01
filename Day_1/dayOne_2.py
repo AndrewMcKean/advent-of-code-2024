@@ -25,14 +25,12 @@ counts = []
 for i in range(len(first)):
   counts.append(first[i] * second.count(first[i]))
 
-total_list = functools.reduce(lambda a, b: a + b)
-
 # Get total similarity score
-total = functools.reduce(lambda a, b: a * b, counts)
-
+total = functools.reduce(lambda acc, value: acc + value, counts)
 
 
 print(f"The total is: {total}")
+
 '''
 Again, easy enough. Slightly better solution I think here, than in puzzle 1.
 '''
