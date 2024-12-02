@@ -1,4 +1,6 @@
 '''
+https://adventofcode.com/2024/day/1
+
 Puzzle Input: Two unsorted list of nums
 Puzzle Ouput: Int, the summed distance between the smallest -> largest nums in both lists. i.e first[0] - second[0] + first[1] - second[1] etc.
 '''
