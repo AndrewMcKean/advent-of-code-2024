@@ -3,7 +3,7 @@ from functools import reduce
 # Get data lists & sort them
 split_by_dont = open('puzzleInput.txt', 'r').read().split("don't")
 
-valid_strings = []
+valid_strings = [split_by_dont[0]]
 
 for string in split_by_dont:
   dos = string.split('do')
